@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pryor to Admit · College Admissions Consulting with Marcy Pryor, Ed.D.</title>
+  <meta name="description" content="Personalized college admissions consulting. Marcy Pryor, Ed.D. (Columbia), helps students gain admission to top schools and earn meaningful merit scholarships." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* dark anchor */
+      --navy: #18293f;
+      --navy-soft: #2a3d56;
+      --navy-deep: #122033;
+      /* the central color: soft slate blue-gray (from Marcy's portrait backdrop) */
+      --slate: #aebec2;
+      --slate-mid: #8ea2a7;
+      --slate-deep: #56696e;    /* readable cool accent on light backgrounds */
+      --slate-pale: #e2eaeb;
+      --silver: #cfdadc;        /* light metallic highlight */
+      /* light base */
+      --paper: #f4f7f7;
+      --paper-tint: #ecf1f1;
+      /* text */
+      --ink: #1f2937;
+      --muted: #4c5a66;
+      --line: rgba(24, 41, 63, 0.11);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 0% 0%, rgba(174,190,194,.30), transparent 60%),
+        radial-gradient(ellipse 70% 55% at 100% 100%, rgba(174,190,194,.22), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 5%, rgba(207,218,220,.20), transparent 60%);
+    }
+
+    .cursor-glow {
+      position: fixed; width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(174,190,194,.22), transparent 65%);
+      transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 1;
+      transition: opacity .4s ease; opacity: 0; will-change: left, top;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600; letter-spacing: -.005em;
+      color: var(--navy); line-height: 1.22;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+    /* scroll progress */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--navy), var(--slate-deep), var(--slate));
+      z-index: 100; box-shadow: 0 0 10px rgba(86,105,110,.5);
+      transition: width .12s ease-out;
+    }
+
+    /* nav */
+    .nav {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(244,247,247,.86);
+      backdrop-filter: saturate(150%) blur(16px);
+      -webkit-backdrop-filter: saturate(150%) blur(16px);
+      border-bottom: 1px solid var(--line);
+      transition: box-shadow .3s ease;
+    }
+    .nav.scrolled { box-shadow: 0 6px 26px rgba(24,41,63,.08); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .brand {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px;
+      letter-spacing: .06em; text-transform: uppercase; color: var(--navy);
+    }
+    .brand span { color: var(--slate-deep); font-style: italic; font-weight: 500; }
+    .nav-links { display: flex; gap: 36px; list-style: none; font-size: 14px; font-weight: 500; }
+    .nav-links a { color: var(--ink); position: relative; transition: color .2s; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 1.5px; width: 0; background: var(--slate-deep); transition: width .28s ease; }
+    .nav-links a:hover { color: var(--slate-deep); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--navy); color: var(--paper); padding: 11px 20px; border-radius: 999px;
+      font-size: 13px; font-weight: 500; transition: background .25s, transform .25s, box-shadow .25s;
+    }
+    .nav-cta:hover { background: var(--slate-deep); transform: translateY(-1px); box-shadow: 0 10px 22px rgba(86,105,110,.4); }
+    @media (max-width: 760px) { .nav-links { display: none; } .nav-inner { height: 64px; } .brand { font-size: 18px; letter-spacing: .04em; } }
+
+    /* sections */
+    section { padding: 112px 0; position: relative; }
+    .section-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--slate-deep); margin-bottom: 14px; display: inline-block;
+    }
+    .section-title { font-size: clamp(30px, 4.1vw, 46px); margin-bottom: 16px; max-width: 740px; }
+    .section-lede { font-size: 18px; color: var(--muted); max-width: 640px; margin-bottom: 50px; }
+
+    /* HERO */
+    .hero {
+      padding: 128px 0 110px; position: relative; overflow: hidden; isolation: isolate;
+      background: linear-gradient(180deg, #dde7e8 0%, #e9f0f0 50%, var(--paper) 100%);
+    }
+    .hero .aurora { position: absolute; inset: -20% -10%; z-index: -2; filter: blur(66px); opacity: .9; }
+    .hero .aurora span { position: absolute; border-radius: 50%; mix-blend-mode: multiply; animation: drift 28s ease-in-out infinite alternate; }
+    .hero .aurora span:nth-child(1){ width:46vw;height:46vw;left:-8vw;top:-12vw; background:radial-gradient(circle,rgba(147,166,171,.55),transparent 65%); animation-duration:30s; }
+    .hero .aurora span:nth-child(2){ width:40vw;height:40vw;right:-6vw;top:2vw; background:radial-gradient(circle,rgba(24,41,63,.12),transparent 65%); animation-duration:34s; animation-direction:alternate-reverse; }
+    .hero .aurora span:nth-child(3){ width:34vw;height:34vw;left:28vw;bottom:-16vw; background:radial-gradient(circle,rgba(207,218,220,.5),transparent 65%); animation-duration:38s; }
+    @keyframes drift { 0%{transform:translate(0,0) scale(1);} 50%{transform:translate(3vw,2.5vw) scale(1.1);} 100%{transform:translate(-2.5vw,-2vw) scale(.96);} }
+    #constellation { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--navy); margin-bottom: 24px; padding: 8px 16px;
+      background: rgba(255,255,255,.6); border: 1px solid rgba(86,105,110,.4);
+      border-radius: 999px; backdrop-filter: blur(6px);
+      animation: fadeUp .8s ease both;
+    }
+    .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--slate-deep); box-shadow: 0 0 0 0 rgba(86,105,110,.5); animation: pulse 2.6s ease-out infinite; }
+    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(86,105,110,.5);} 70%{box-shadow:0 0 0 11px rgba(86,105,110,0);} 100%{box-shadow:0 0 0 0 rgba(86,105,110,0);} }
+
+    .hero h1 {
+      font-size: clamp(36px, 5.2vw, 60px);
+      max-width: 880px; margin-bottom: 20px;
+      line-height: 1.24; padding-bottom: .12em;
+    }
+    .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(24px); transition: opacity .65s cubic-bezier(.2,.8,.2,1), transform .65s cubic-bezier(.2,.8,.2,1); }
+    .hero h1 .shine {
+      font-style: italic; font-weight: 500;
+      padding: 0 .12em 0 .04em;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+      /* cool "pewter" sheen: stays dark enough to read on the light hero */
+      background: linear-gradient(100deg, var(--navy) 0%, var(--navy) 26%, var(--slate-deep) 42%, var(--slate-mid) 50%, var(--slate-deep) 58%, var(--navy) 74%, var(--navy) 100%);
+      background-size: 240% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shimmer 6.5s linear infinite;
+    }
+    @keyframes shimmer { 0%{background-position:200% 0;} 100%{background-position:-40% 0;} }
+
+    .hero p.lede { font-size: clamp(17px, 1.4vw, 20px); max-width: 600px; color: var(--muted); margin-bottom: 36px; font-weight: 300; animation: fadeUp .8s ease both .9s; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp .8s ease both 1.05s; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 28px; border-radius: 999px; font-size: 15px; font-weight: 500; transition: all .25s ease; cursor: pointer; border: 0; position: relative; overflow: hidden; }
+    .btn .arrow { transition: transform .25s ease; }
+    .btn:hover .arrow { transform: translateX(4px); }
+    .btn-primary { background: var(--navy); color: var(--paper); }
+    .btn-primary::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.2) 50%, transparent 70%); transform: translateX(-120%); transition: transform .6s ease; }
+    .btn-primary:hover { background: var(--navy-soft); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(24,41,63,.24); }
+    .btn-primary:hover::before { transform: translateX(120%); }
+    .btn-secondary { background: rgba(174,190,194,.4); color: var(--navy); border: 1.5px solid var(--navy); backdrop-filter: blur(6px); }
+    .btn-secondary:hover { background: var(--navy); color: var(--paper); transform: translateY(-2px); }
+
+    .hero-meta { margin-top: 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 760px; animation: fadeUp .8s ease both 1.25s; }
+    .hero-meta-item { border-left: 2px solid var(--slate-deep); padding-left: 18px; }
+    .hero-meta-item strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3.4vw, 40px); color: var(--navy); font-weight: 600; line-height: 1.12; margin-bottom: 4px; }
+    .hero-meta-item strong .count-up { font-family: inherit; font-size: inherit; font-weight: inherit; line-height: inherit; color: inherit; }
+    .hero-meta-item span { font-size: 13.5px; color: var(--muted); letter-spacing: .02em; line-height: 1.45; display: block; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px);} to { opacity: 1; transform: translateY(0);} }
+    @media (max-width: 640px) { .hero-meta { grid-template-columns: 1fr; gap: 20px; } .hero { padding: 90px 0 70px; } }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 350px 1fr; gap: 80px; align-items: center; }
+    .portrait { position: relative; width: 350px; max-width: 100%; perspective: 900px; }
+    .portrait-frame {
+      position: relative; aspect-ratio: 3 / 4; width: 100%; border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 28px 56px rgba(24,41,63,.2); background: var(--slate);
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease; transform-style: preserve-3d;
+    }
+    .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .portrait-frame .placeholder { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 8px; background: linear-gradient(135deg, var(--slate-pale), var(--slate)); color: var(--navy); text-align: center; padding: 28px; font-size: 13px; }
+    .portrait-frame .placeholder strong { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--navy); font-size: 21px; }
+    .portrait::after { content: ""; position: absolute; inset: -16px; border-radius: calc(var(--radius) + 6px); z-index: -1; background: conic-gradient(from 0deg, rgba(174,190,194,0), rgba(142,162,167,.6), rgba(207,218,220,.45), rgba(24,41,63,.18), rgba(174,190,194,0)); filter: blur(16px); opacity: .6; animation: spin 16s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .portrait-credential { position: absolute; bottom: -18px; right: -18px; background: var(--navy); color: var(--paper); padding: 15px 21px; border-radius: var(--radius); box-shadow: 0 16px 32px rgba(24,41,63,.28); animation: floaty 5.5s ease-in-out infinite; z-index: 3; }
+    @keyframes floaty { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
+    .portrait-credential strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--paper); }
+    .portrait-credential span { font-size: 11px; color: var(--slate); letter-spacing: .14em; text-transform: uppercase; }
+
+    .about-body h2 { margin-bottom: 18px; }
+    .about-body p { font-size: 17px; color: var(--muted); margin-bottom: 22px; line-height: 1.75; }
+    .about-chips { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .chip { font-size: 13px; font-weight: 500; color: var(--navy); background: rgba(174,190,194,.42); border: 1px solid rgba(86,105,110,.4); padding: 8px 15px; border-radius: 999px; transition: transform .2s, background .2s; }
+    .chip:hover { transform: translateY(-2px); background: rgba(174,190,194,.62); }
+    @media (max-width: 880px) { .about-grid { grid-template-columns: 1fr; gap: 56px; justify-items: center; text-align: center; } .about-chips { justify-content: center; } .portrait { margin: 0 auto; } .portrait-credential { right: 0; } }
+
+    /* shared tilt */
+    .tilt { transform-style: preserve-3d; transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease; will-change: transform; }
+    .tilt .tilt-shine { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(180px circle at var(--mx,50%) var(--my,0%), rgba(255,255,255,.22), transparent 62%); opacity: 0; transition: opacity .3s ease; }
+    .tilt:hover .tilt-shine { opacity: 1; }
+
+    /* WHY */
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .why-card { position: relative; background: rgba(255,255,255,.7); backdrop-filter: blur(8px); padding: 34px 26px; border-radius: var(--radius); border: 1px solid rgba(86,105,110,.24); border-top: 3px solid var(--slate-deep); overflow: hidden; }
+    .why-card:hover { box-shadow: 0 22px 44px rgba(24,41,63,.12); border-color: var(--slate-deep); }
+    .why-num { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--slate-deep); font-weight: 600; margin-bottom: 8px; }
+    .why-card h3 { font-size: 22px; margin-bottom: 8px; }
+    .why-card p { font-size: 14.5px; color: var(--muted); line-height: 1.65; }
+    @media (max-width: 980px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* SERVICES: slate-toned band */
+    .services-wrap { background: linear-gradient(180deg, transparent 0%, var(--slate-pale) 9%, var(--slate-pale) 91%, transparent 100%); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .service { position: relative; background: #fff; padding: 36px 32px; border-radius: var(--radius); border-left: 3px solid var(--slate-deep); box-shadow: 0 4px 14px rgba(24,41,63,.05); overflow: hidden; }
+    .service:hover { box-shadow: 0 20px 44px rgba(24,41,63,.1); }
+    .service h3 { font-size: 23px; margin-bottom: 10px; }
+    .service p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+    @media (max-width: 720px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* MARQUEE: slate band */
+    .marquee-band { padding: 44px 0; background: var(--slate); position: relative; overflow: hidden; z-index: 2; }
+    .marquee-band::before, .marquee-band::after { content: ""; position: absolute; top: 0; bottom: 0; width: 130px; z-index: 3; pointer-events: none; }
+    .marquee-band::before { left: 0; background: linear-gradient(90deg, var(--slate), transparent); }
+    .marquee-band::after { right: 0; background: linear-gradient(270deg, var(--slate), transparent); }
+    .marquee-label { text-align: center; color: var(--navy); font-size: 11px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 20px; opacity: .78; }
+    .marquee-row + .marquee-row { margin-top: 12px; }
+    .marquee { display: flex; width: max-content; animation: scrollx 95s linear infinite; }
+    .marquee.rev { animation-direction: reverse; animation-duration: 115s; }
+    .marquee:hover { animation-play-state: paused; }
+    .marquee span { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--navy); padding: 0 26px; white-space: nowrap; display: inline-flex; align-items: center; gap: 26px; }
+    .marquee span::after { content: "✦"; color: var(--navy-soft); font-size: 11px; opacity: .65; }
+    @keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* RESULTS */
+    .results-merit { display: inline-flex; align-items: baseline; gap: 6px; font-size: 14px; font-weight: 600; letter-spacing: .03em; color: var(--navy); background: rgba(86,105,110,.16); padding: 9px 18px; border-radius: 999px; margin-bottom: 46px; }
+    .results-merit .count { font-family: 'Cormorant Garamond', serif; font-size: 18px; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .result-col { position: relative; background: #fff; padding: 34px 30px; border-radius: var(--radius); border-top: 3px solid var(--slate-deep); box-shadow: 0 4px 16px rgba(24,41,63,.05); overflow: hidden; }
+    .result-col:hover { box-shadow: 0 20px 48px rgba(24,41,63,.11); }
+    .result-col h3 { font-size: 20px; margin-bottom: 16px; }
+    .result-col ul { list-style: none; }
+    .result-col li { padding: 9px 0; font-size: 14.5px; color: var(--ink); border-bottom: 1px dashed var(--line); opacity: 0; transform: translateX(-8px); transition: opacity .5s ease, transform .5s ease; }
+    .result-col li:last-child { border-bottom: 0; }
+    .result-col.in li { opacity: 1; transform: translateX(0); }
+    .result-col.in li:nth-child(1){transition-delay:.05s}.result-col.in li:nth-child(2){transition-delay:.10s}.result-col.in li:nth-child(3){transition-delay:.15s}.result-col.in li:nth-child(4){transition-delay:.20s}.result-col.in li:nth-child(5){transition-delay:.25s}.result-col.in li:nth-child(6){transition-delay:.30s}.result-col.in li:nth-child(7){transition-delay:.35s}.result-col.in li:nth-child(8){transition-delay:.40s}
+    .results-note { margin-top: 52px; padding: 44px; border-radius: var(--radius); text-align: center; font-size: 17px; color: rgba(244,247,247,.94); background: radial-gradient(ellipse at top left, rgba(174,190,194,.3), transparent 55%), radial-gradient(ellipse at bottom right, var(--navy-soft), transparent 60%), var(--navy); box-shadow: 0 22px 56px rgba(24,41,63,.2); }
+    .results-note strong { color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 24px; }
+    @media (max-width: 880px) { .results-grid { grid-template-columns: 1fr; } }
+
+    /* TESTIMONIALS: subtle slate band */
+    .testimonials-wrap { background: linear-gradient(180deg, transparent 0%, var(--paper-tint) 9%, var(--paper-tint) 91%, transparent 100%); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .testimonial { position: relative; background: #fff; padding: 36px 34px 32px; border-left: 3px solid var(--slate-deep); border-radius: 0 var(--radius) var(--radius) 0; box-shadow: 0 4px 14px rgba(24,41,63,.04); overflow: hidden; }
+    .testimonial::before { content: "\201C"; position: absolute; top: -14px; left: 18px; font-family: 'Cormorant Garamond', serif; font-size: 110px; color: var(--slate-mid); opacity: .25; line-height: 1; pointer-events: none; }
+    .testimonial p { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--navy); line-height: 1.55; margin-bottom: 16px; position: relative; }
+    .testimonial-author { font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
+    .testimonial-author span { display: block; color: var(--muted); font-weight: 400; letter-spacing: .04em; text-transform: none; font-size: 13px; margin-top: 3px; }
+    @media (max-width: 760px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* CONTACT */
+    .contact { text-align: center; }
+    .contact-frame { position: relative; isolation: isolate; max-width: 700px; margin: 0 auto; padding: 3px; border-radius: 18px; overflow: hidden; }
+    .contact-frame::before { content: ""; position: absolute; z-index: 0; inset: -160%; background: conic-gradient(from 0deg, var(--navy), var(--navy-soft), var(--slate-deep), var(--slate), var(--silver), var(--slate), var(--slate-deep), var(--navy-soft), var(--navy)); animation: spin 9s linear infinite; }
+    .contact-card { position: relative; z-index: 1; background: #fff; border-radius: 16px; padding: 62px 52px; box-shadow: 0 24px 64px rgba(24,41,63,.1); }
+    .contact-card h2 { font-size: clamp(30px, 3.6vw, 42px); margin-bottom: 14px; }
+    .contact-card > p { color: var(--muted); font-size: 17px; margin-bottom: 30px; }
+    .contact-email { display: inline-block; font-family: 'Cormorant Garamond', serif; font-size: 25px; color: var(--navy); margin-bottom: 28px; border-bottom: 1.5px solid var(--slate-deep); padding-bottom: 4px; transition: color .2s, transform .2s, border-color .2s; }
+    .contact-email:hover { color: var(--slate-deep); border-color: var(--navy); transform: translateY(-1px); }
+    .contact-note { margin-top: 32px; font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+    @media (max-width: 640px) { .contact-card { padding: 46px 26px; } }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(244,247,247,.72); padding: 52px 0 36px; text-align: center; font-size: 13.5px; position: relative; z-index: 2; }
+    footer .brand { color: var(--paper); margin-bottom: 6px; display: inline-block; }
+    footer .brand span { color: var(--slate); }
+    footer a { color: var(--slate); }
+    footer a:hover { color: var(--paper); }
+    .footer-tag { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--slate); margin: 14px auto 22px; max-width: 560px; }
+    .footer-fine { font-size: 12px; letter-spacing: .05em; color: rgba(244,247,247,.45); margin-top: 18px; }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .stagger > * { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1); }
+    .stagger.visible > * { opacity: 1; transform: translateY(0); }
+    .stagger.visible > *:nth-child(1){transition-delay:.05s}.stagger.visible > *:nth-child(2){transition-delay:.13s}.stagger.visible > *:nth-child(3){transition-delay:.21s}.stagger.visible > *:nth-child(4){transition-delay:.29s}.stagger.visible > *:nth-child(5){transition-delay:.37s}.stagger.visible > *:nth-child(6){transition-delay:.45s}
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      .reveal, .stagger > *, .hero h1 .word, .hero-eyebrow, .hero p.lede, .hero-actions, .hero-meta, .result-col li { opacity: 1 !important; transform: none !important; }
+      .marquee { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Pryor <span>to</span> Admit</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Free Consultation</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="aurora"><span></span><span></span><span></span></div>
+    <canvas id="constellation"></canvas>
+    <div class="container">
+      <span class="hero-eyebrow"><span class="dot"></span> College Admissions Consulting</span>
+      <h1 id="heroTitle"><span class="l1">Personalized college admissions support,</span><span class="l2">from first list to final decision.</span></h1>
+      <p class="lede">Marcy Pryor, Ed.D., turns effort into opportunities and opportunities into outcomes.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Schedule a Free Consultation <span class="arrow">→</span></a>
+        <a href="#results" class="btn btn-secondary">See the Results</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <strong>Columbia</strong>
+          <span>Doctorate in Education</span>
+        </div>
+        <div class="hero-meta-item">
+          <strong><span class="count-up" data-target="44" data-prefix="$" data-suffix="K+">$0K+</span></strong>
+          <span>merit per year, per student</span>
+        </div>
+        <div class="hero-meta-item">
+          <strong>Ivy League</strong>
+          <span>admits, with a limited caseload</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid reveal">
+        <div class="portrait">
+          <div class="portrait-frame" id="portraitFrame">
+            <img src="marcy.png" alt="Marcy Pryor, founder of Pryor to Admit" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="placeholder"><strong>Marcy Pryor</strong>Add marcy.png to this folder</div>
+          </div>
+          <div class="portrait-credential">
+            <strong>Ed.D.</strong>
+            <span>Columbia University</span>
+          </div>
+        </div>
+        <div class="about-body">
+          <p class="section-eyebrow">Meet Marcy Pryor</p>
+          <h2 class="section-title">A trusted guide through the college process.</h2>
+          <p>Marcy holds a doctorate from Columbia University and brings decades of teaching experience to every student. She keeps her caseload small, so each family gets real attention. Most come by word of mouth.</p>
+          <div class="about-chips">
+            <span class="chip">Doctorate, Columbia University</span>
+            <span class="chip">Decades of teaching</span>
+            <span class="chip">Small, by-referral practice</span>
+          </div>
+          <a href="#contact" class="btn btn-primary">Get in Touch <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="container">
+      <p class="section-eyebrow reveal">Why Families Choose Pryor to Admit</p>
+      <h2 class="section-title reveal">Personalized strategy. Real partnership. Outcomes that follow.</h2>
+      <p class="section-lede reveal">The college process is overwhelming. Marcy makes it manageable, and keeps every step intentional.</p>
+      <div class="why-grid stagger">
+        <div class="why-card tilt"><div class="tilt-shine"></div>
+          <div class="why-num">01</div><h3>Personalized Guidance</h3>
+          <p>A strategy built around who the student is, what they want, and where they will grow.</p>
+        </div>
+        <div class="why-card tilt"><div class="tilt-shine"></div>
+          <div class="why-num">02</div><h3>Unlimited Support</h3>
+          <p>From brainstorming to submission, Marcy is there throughout, for the whole family.</p>
+        </div>
+        <div class="why-card tilt"><div class="tilt-shine"></div>
+          <div class="why-num">03</div><h3>Proven Results</h3>
+          <p>Acceptances and meaningful merit across business, STEM, and the humanities.</p>
+        </div>
+        <div class="why-card tilt"><div class="tilt-shine"></div>
+          <div class="why-num">04</div><h3>Limited Caseload</h3>
+          <p>A small number of families each year, so every student gets real attention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <div class="services-wrap">
+    <section id="services">
+      <div class="container">
+        <p class="section-eyebrow reveal">Services</p>
+        <h2 class="section-title reveal">Full support, every step of the way.</h2>
+        <div class="services-grid stagger">
+          <div class="service tilt"><div class="tilt-shine"></div>
+            <h3>Strategy &amp; Planning</h3>
+            <p>Customized academic planning, a structured timeline, polished resumes, and interview coaching.</p>
+          </div>
+          <div class="service tilt"><div class="tilt-shine"></div>
+            <h3>The College List</h3>
+            <p>Data-driven and strategic, with a smart range of schools, including hidden gems beyond the obvious.</p>
+          </div>
+          <div class="service tilt"><div class="tilt-shine"></div>
+            <h3>Applications &amp; Essays</h3>
+            <p>Step-by-step Common App support, personal statement and supplemental essays, activities, and proofreading.</p>
+          </div>
+          <div class="service tilt"><div class="tilt-shine"></div>
+            <h3>Honors &amp; Scholarships</h3>
+            <p>Honors program applications and a merit-scholarship strategy built to position students for top awards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-band" aria-hidden="true">
+    <div class="marquee-label">Where Pryor to Admit students have been admitted</div>
+    <div class="marquee-row"><div class="marquee" id="mq1"></div></div>
+    <div class="marquee-row"><div class="marquee rev" id="mq2"></div></div>
+  </div>
+
+  <!-- RESULTS -->
+  <section id="results">
+    <div class="container">
+      <p class="section-eyebrow reveal">Real Results, Real Outcomes</p>
+      <h2 class="section-title reveal">Recent acceptances.</h2>
+      <span class="results-merit reveal">Merit scholarships earned: <span class="count count-up" data-target="44" data-prefix="$18,000 to $" data-suffix=",000+ per year">$18,000 to $0,000+ per year</span></span>
+      <div class="results-grid">
+        <div class="result-col">
+          <h3>Ivy &amp; Most Selective</h3>
+          <ul>
+            <li>University of Pennsylvania, Wharton</li>
+            <li>Cornell University</li>
+            <li>William &amp; Mary</li>
+            <li>Lehigh University</li>
+            <li>University of Richmond</li>
+            <li>Bucknell University</li>
+            <li>Case Western Reserve University</li>
+            <li>Northeastern University, Honors</li>
+          </ul>
+        </div>
+        <div class="result-col">
+          <h3>Top National Universities</h3>
+          <ul>
+            <li>Indiana University, Kelley School of Business</li>
+            <li>George Washington University</li>
+            <li>The Ohio State University</li>
+            <li>University of Florida</li>
+            <li>Rutgers University</li>
+            <li>Michigan State University</li>
+            <li>University of Connecticut</li>
+          </ul>
+        </div>
+        <div class="result-col">
+          <h3>Standout Programs &amp; Honors Colleges</h3>
+          <ul>
+            <li>University of Delaware</li>
+            <li>Miami University, Ohio</li>
+            <li>Union College</li>
+            <li>RIT, Accelerated Program</li>
+            <li>Quinnipiac University</li>
+            <li>College of Charleston</li>
+            <li>CU Boulder</li>
+          </ul>
+        </div>
+      </div>
+      <div class="results-note reveal">
+        <strong>These results are not random.</strong><br>
+        A thoughtful college list, strong positioning, and clear, guided execution. Every step is intentional.
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <div class="testimonials-wrap">
+    <section id="testimonials">
+      <div class="container">
+        <p class="section-eyebrow reveal">Client Testimonials</p>
+        <h2 class="section-title reveal">From the families who lived it.</h2>
+        <div class="testimonials-grid stagger">
+          <div class="testimonial">
+            <p>"We went from overwhelmed and unsure where to start to completely organized and confident, and the results exceeded expectations."</p>
+            <div class="testimonial-author">Andrea C.<span>Parent of Significant Merit Admit</span></div>
+          </div>
+          <div class="testimonial">
+            <p>"Marcy makes the college application process so much less stressful for the student and the parents. I already recommend her to friends."</p>
+            <div class="testimonial-author">Karen D.<span>Parent of Lehigh Admit</span></div>
+          </div>
+          <div class="testimonial">
+            <p>"It's incredible the way she relates to the kids. She gets them to open up, which matters so much for choosing schools and writing essays."</p>
+            <div class="testimonial-author">Michele K.<span>Parent of Cornell Admit</span></div>
+          </div>
+          <div class="testimonial">
+            <p>"The whole process is overwhelming, but Marcy mapped it out so clearly and made it make so much more sense."</p>
+            <div class="testimonial-author">Dawn D.<span>Parent of University of Richmond Admit</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="contact-frame">
+          <div class="contact-card">
+            <p class="section-eyebrow">Let's Get Started</p>
+            <h2>Collaborating for your student's success.</h2>
+            <p>The first consultation is free. Reach out to talk about goals, timeline, and fit.</p>
+            <a href="mailto:pryor.to.admit@gmail.com?subject=Free%20Consultation%20Inquiry" class="contact-email">pryor.to.admit@gmail.com</a>
+            <div>
+              <a href="mailto:pryor.to.admit@gmail.com?subject=Free%20Consultation%20Inquiry" class="btn btn-primary">Email Marcy <span class="arrow">→</span></a>
+            </div>
+            <p class="contact-note">Pryor to Admit keeps a limited caseload each year. Families are encouraged to reach out early to discuss availability and fit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <span class="brand">Pryor <span>to</span> Admit</span>
+      <div class="footer-tag">Turning effort into opportunities, and opportunities into outcomes.</div>
+      <div><a href="mailto:pryor.to.admit@gmail.com">pryor.to.admit@gmail.com</a></div>
+      <div class="footer-fine">© <span id="year"></span> Pryor to Admit · Marcy Pryor, Ed.D.</div>
+    </div>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* hero headline: split each line into words, animate in */
+    (function(){
+      const el = document.getElementById('heroTitle');
+      const l1 = el.querySelector('.l1'), l2 = el.querySelector('.l2');
+      let idx = 0;
+      function build(node, shine){
+        const words = node.textContent.trim().split(/\s+/);
+        node.innerHTML = words.map(w => '<span class="'+(shine?'word shine':'word')+'" style="transition-delay:'+(idx++*0.055)+'s">'+w+'</span>').join(' ');
+      }
+      build(l1, false); build(l2, true);
+      l1.style.display = 'block'; l2.style.display = 'block'; l2.style.marginTop = '.08em';
+      const words = el.querySelectorAll('.word');
+      if (reduceMotion) { words.forEach(w => { w.style.opacity = 1; w.style.transform = 'none'; }); return; }
+      requestAnimationFrame(() => requestAnimationFrame(() => { words.forEach(w => { w.style.opacity = 1; w.style.transform = 'translateY(0)'; }); }));
+    })();
+
+    /* scroll progress + nav shadow */
+    const progress = document.getElementById('scrollProgress'), nav = document.getElementById('nav');
+    function onScroll(){
+      const h = document.documentElement;
+      const scrolled = h.scrollTop || document.body.scrollTop;
+      const total = (h.scrollHeight - h.clientHeight) || 1;
+      progress.style.width = (scrolled / total * 100) + '%';
+      nav.classList.toggle('scrolled', scrolled > 8);
+    }
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    /* cursor glow */
+    if (!reduceMotion && !coarse) (function(){
+      const glow = document.getElementById('cursorGlow');
+      let tx=0, ty=0, cx=0, cy=0, raf=null;
+      addEventListener('mousemove', e => { tx=e.clientX; ty=e.clientY; glow.style.opacity=1; if(!raf) raf=requestAnimationFrame(tick); });
+      addEventListener('mouseleave', () => glow.style.opacity=0);
+      function tick(){ cx+=(tx-cx)*.15; cy+=(ty-cy)*.15; glow.style.left=cx+'px'; glow.style.top=cy+'px'; if(Math.abs(tx-cx)>.5||Math.abs(ty-cy)>.5) raf=requestAnimationFrame(tick); else raf=null; }
+    })();
+
+    /* count-up */
+    function runCount(el){
+      const target = parseFloat(el.dataset.target), prefix = el.dataset.prefix || '', suffix = el.dataset.suffix || '';
+      const dur = 1400, start = performance.now();
+      (function frame(now){
+        const p = Math.min((now-start)/dur, 1);
+        const v = Math.round((1 - Math.pow(1-p,3)) * target);
+        el.textContent = prefix + v + suffix;
+        if (p < 1) requestAnimationFrame(frame); else el.textContent = prefix + target + suffix;
+      })(start);
+    }
+    document.querySelectorAll('.hero-meta .count-up').forEach(c => { c.dataset.done='1'; runCount(c); });
+
+    /* IntersectionObserver */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const t = entry.target;
+        t.classList.add('visible');
+        if (t.classList.contains('result-col')) t.classList.add('in');
+        t.querySelectorAll('.count-up').forEach(c => { if(!c.dataset.done){ c.dataset.done='1'; runCount(c); } });
+        io.unobserve(t);
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal, .stagger, .result-col, .hero-meta').forEach(el => io.observe(el));
+
+    /* 3D tilt */
+    if (!reduceMotion && !coarse) document.querySelectorAll('.tilt').forEach(card => {
+      const max = 7;
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX-r.left)/r.width, py = (e.clientY-r.top)/r.height;
+        card.style.transform = 'perspective(800px) rotateX('+((py-.5)*-2*max)+'deg) rotateY('+((px-.5)*2*max)+'deg) translateY(-4px)';
+        card.style.setProperty('--mx', (px*100)+'%'); card.style.setProperty('--my', (py*100)+'%');
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform=''; });
+    });
+
+    /* portrait parallax */
+    if (!reduceMotion && !coarse) (function(){
+      const wrap = document.querySelector('.portrait'), frame = document.getElementById('portraitFrame');
+      if(!wrap||!frame) return;
+      wrap.addEventListener('mousemove', e => {
+        const r = wrap.getBoundingClientRect();
+        const px = (e.clientX-r.left)/r.width-.5, py = (e.clientY-r.top)/r.height-.5;
+        frame.style.transform = 'rotateY('+(px*9)+'deg) rotateX('+(-py*9)+'deg) scale(1.02)';
+        frame.style.boxShadow = '0 38px 76px rgba(24,41,63,.27)';
+      });
+      wrap.addEventListener('mouseleave', () => { frame.style.transform=''; frame.style.boxShadow=''; });
+    })();
+
+    /* constellation: slate dots */
+    if (!reduceMotion) (function(){
+      const canvas = document.getElementById('constellation'), hero = document.getElementById('top'), ctx = canvas.getContext('2d');
+      let w,h,pts,raf; const COUNT=52, LINK=125;
+      function size(){
+        w = canvas.width = hero.offsetWidth; h = canvas.height = hero.offsetHeight;
+        pts = Array.from({length:COUNT}, () => ({ x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-.5)*.22, vy:(Math.random()-.5)*.22, r:Math.random()*1.5+.6 }));
+      }
+      function step(){
+        ctx.clearRect(0,0,w,h);
+        for(let i=0;i<pts.length;i++){
+          const p=pts[i]; p.x+=p.vx; p.y+=p.vy;
+          if(p.x<0||p.x>w)p.vx*=-1; if(p.y<0||p.y>h)p.vy*=-1;
+          for(let j=i+1;j<pts.length;j++){
+            const q=pts[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.hypot(dx,dy);
+            if(d<LINK){ ctx.strokeStyle='rgba(94,114,122,'+(.18*(1-d/LINK))+')'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
+          }
+        }
+        for(const p of pts){ ctx.fillStyle='rgba(94,114,122,.5)'; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); }
+        raf=requestAnimationFrame(step);
+      }
+      size(); step();
+      addEventListener('resize', () => { cancelAnimationFrame(raf); size(); step(); });
+    })();
+
+    /* school marquee */
+    (function(){
+      const schools = ['University of Pennsylvania (Wharton)','Cornell University','William & Mary','Lehigh University','University of Richmond','Bucknell University','Case Western Reserve','Northeastern Honors','Indiana University (Kelley)','George Washington University','Ohio State University','University of Florida','Rutgers University','Michigan State University','University of Connecticut','University of Delaware','Miami University (Ohio)','Union College','RIT (Accelerated)','Quinnipiac University','College of Charleston','CU Boulder'];
+      function fill(id, list){ const el=document.getElementById(id); el.innerHTML = list.concat(list).map(s => '<span>'+s+'</span>').join(''); }
+      const half = Math.ceil(schools.length/2);
+      fill('mq1', schools.slice(0, half)); fill('mq2', schools.slice(half));
+    })();
+  </script>
+</body>
+</html>
