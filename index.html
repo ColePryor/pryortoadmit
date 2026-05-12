@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pryor to Admit · College Admissions Consulting with Marcy Pryor, Ed.D.</title>
-  <meta name="description" content="Personalized college admissions consulting. Marcy Pryor, Ed.D. (Columbia), helps students gain admission to top schools and earn meaningful merit scholarships." />
+  <title>Pryor to Admit · College Admissions Advising with Marcy Pryor, Ed.D.</title>
+  <meta name="description" content="Personalized college admissions advising. Marcy Pryor, Ed.D. (Columbia), helps students gain admission to top schools and earn meaningful merit scholarships." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -179,8 +179,8 @@
     @media (max-width: 640px) { .hero-meta { grid-template-columns: 1fr; gap: 20px; } .hero { padding: 90px 0 70px; } }
 
     /* ABOUT */
-    .about-grid { display: grid; grid-template-columns: 350px 1fr; gap: 80px; align-items: center; }
-    .portrait { position: relative; width: 350px; max-width: 100%; perspective: 900px; }
+    .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 76px; align-items: center; }
+    .portrait { position: relative; width: 300px; max-width: 100%; perspective: 900px; }
     .portrait-frame {
       position: relative; aspect-ratio: 3 / 4; width: 100%; border-radius: var(--radius); overflow: hidden;
       box-shadow: 0 28px 56px rgba(24,41,63,.2); background: var(--slate);
@@ -252,7 +252,7 @@
     .result-col li { padding: 9px 0; font-size: 14.5px; color: var(--ink); border-bottom: 1px dashed var(--line); opacity: 0; transform: translateX(-8px); transition: opacity .5s ease, transform .5s ease; }
     .result-col li:last-child { border-bottom: 0; }
     .result-col.in li { opacity: 1; transform: translateX(0); }
-    .result-col.in li:nth-child(1){transition-delay:.05s}.result-col.in li:nth-child(2){transition-delay:.10s}.result-col.in li:nth-child(3){transition-delay:.15s}.result-col.in li:nth-child(4){transition-delay:.20s}.result-col.in li:nth-child(5){transition-delay:.25s}.result-col.in li:nth-child(6){transition-delay:.30s}.result-col.in li:nth-child(7){transition-delay:.35s}.result-col.in li:nth-child(8){transition-delay:.40s}
+    .result-col.in li:nth-child(1){transition-delay:.05s}.result-col.in li:nth-child(2){transition-delay:.10s}.result-col.in li:nth-child(3){transition-delay:.15s}.result-col.in li:nth-child(4){transition-delay:.20s}.result-col.in li:nth-child(5){transition-delay:.25s}.result-col.in li:nth-child(6){transition-delay:.30s}.result-col.in li:nth-child(7){transition-delay:.35s}.result-col.in li:nth-child(8){transition-delay:.40s}.result-col.in li:nth-child(9){transition-delay:.45s}.result-col.in li:nth-child(10){transition-delay:.50s}.result-col.in li:nth-child(11){transition-delay:.55s}
     .results-note { margin-top: 52px; padding: 44px; border-radius: var(--radius); text-align: center; font-size: 17px; color: rgba(244,247,247,.94); background: radial-gradient(ellipse at top left, rgba(174,190,194,.3), transparent 55%), radial-gradient(ellipse at bottom right, var(--navy-soft), transparent 60%), var(--navy); box-shadow: 0 22px 56px rgba(24,41,63,.2); }
     .results-note strong { color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 24px; }
     @media (max-width: 880px) { .results-grid { grid-template-columns: 1fr; } }
@@ -274,8 +274,10 @@
     .contact-card { position: relative; z-index: 1; background: #fff; border-radius: 16px; padding: 62px 52px; box-shadow: 0 24px 64px rgba(24,41,63,.1); }
     .contact-card h2 { font-size: clamp(30px, 3.6vw, 42px); margin-bottom: 14px; }
     .contact-card > p { color: var(--muted); font-size: 17px; margin-bottom: 30px; }
-    .contact-email { display: inline-block; font-family: 'Cormorant Garamond', serif; font-size: 25px; color: var(--navy); margin-bottom: 28px; border-bottom: 1.5px solid var(--slate-deep); padding-bottom: 4px; transition: color .2s, transform .2s, border-color .2s; }
-    .contact-email:hover { color: var(--slate-deep); border-color: var(--navy); transform: translateY(-1px); }
+    .contact-lines { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 28px; }
+    .contact-line { display: inline-block; font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--navy); border-bottom: 1.5px solid var(--slate-deep); padding-bottom: 3px; transition: color .2s, transform .2s, border-color .2s; }
+    .contact-line:hover { color: var(--slate-deep); border-color: var(--navy); transform: translateY(-1px); }
+    .contact-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .contact-note { margin-top: 32px; font-size: 13.5px; color: var(--muted); line-height: 1.65; }
     @media (max-width: 640px) { .contact-card { padding: 46px 26px; } }
 
@@ -317,7 +319,7 @@
         <li><a href="#results">Results</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Free Consultation</a>
+      <a href="mailto:pryor.to.admit@gmail.com?subject=Free%20Consultation%20Inquiry" class="nav-cta">Free Consultation</a>
     </div>
   </nav>
 
@@ -326,11 +328,11 @@
     <div class="aurora"><span></span><span></span><span></span></div>
     <canvas id="constellation"></canvas>
     <div class="container">
-      <span class="hero-eyebrow"><span class="dot"></span> College Admissions Consulting</span>
-      <h1 id="heroTitle"><span class="l1">Personalized college admissions support,</span><span class="l2">from first list to final decision.</span></h1>
+      <span class="hero-eyebrow"><span class="dot"></span> College Admissions Advising</span>
+      <h1 id="heroTitle"><span class="l1">From Start to Finish:</span><span class="l2">Personalized Support for College Admissions Success</span></h1>
       <p class="lede">Marcy Pryor, Ed.D., turns effort into opportunities and opportunities into outcomes.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Schedule a Free Consultation <span class="arrow">→</span></a>
+        <a href="mailto:pryor.to.admit@gmail.com?subject=Free%20Consultation%20Inquiry" class="btn btn-primary">Schedule a Free Consultation <span class="arrow">→</span></a>
         <a href="#results" class="btn btn-secondary">See the Results</a>
       </div>
       <div class="hero-meta">
@@ -356,8 +358,8 @@
       <div class="about-grid reveal">
         <div class="portrait">
           <div class="portrait-frame" id="portraitFrame">
-            <img src="marcy.png" alt="Marcy Pryor, founder of Pryor to Admit" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-            <div class="placeholder"><strong>Marcy Pryor</strong>Add marcy.png to this folder</div>
+            <img src="marcy.jpg" alt="Marcy Pryor, founder of Pryor to Admit" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="placeholder"><strong>Marcy Pryor</strong>Add marcy.jpg to this folder</div>
           </div>
           <div class="portrait-credential">
             <strong>Ed.D.</strong>
@@ -373,7 +375,7 @@
             <span class="chip">Decades of teaching</span>
             <span class="chip">Small, by-referral practice</span>
           </div>
-          <a href="#contact" class="btn btn-primary">Get in Touch <span class="arrow">→</span></a>
+          <a href="mailto:pryor.to.admit@gmail.com?subject=Free%20Consultation%20Inquiry" class="btn btn-primary">Get in Touch <span class="arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -453,17 +455,21 @@
           <ul>
             <li>University of Pennsylvania, Wharton</li>
             <li>Cornell University</li>
+            <li>Georgetown University</li>
+            <li>Tufts University</li>
+            <li>Wesleyan University</li>
+            <li>London School of Economics</li>
             <li>William &amp; Mary</li>
             <li>Lehigh University</li>
             <li>University of Richmond</li>
-            <li>Bucknell University</li>
-            <li>Case Western Reserve University</li>
             <li>Northeastern University, Honors</li>
           </ul>
         </div>
         <div class="result-col">
           <h3>Top National Universities</h3>
           <ul>
+            <li>Bucknell University</li>
+            <li>Case Western Reserve University</li>
             <li>Indiana University, Kelley School of Business</li>
             <li>George Washington University</li>
             <li>The Ohio State University</li>
@@ -530,9 +536,13 @@
             <p class="section-eyebrow">Let's Get Started</p>
             <h2>Collaborating for your student's success.</h2>
             <p>The first consultation is free. Reach out to talk about goals, timeline, and fit.</p>
-            <a href="mailto:pryor.to.admit@gmail.com?subject=Free%20Consultation%20Inquiry" class="contact-email">pryor.to.admit@gmail.com</a>
-            <div>
+            <div class="contact-lines">
+              <a href="mailto:pryor.to.admit@gmail.com?subject=Free%20Consultation%20Inquiry" class="contact-line">pryor.to.admit@gmail.com</a>
+              <a href="tel:+19142621883" class="contact-line">914-262-1883</a>
+            </div>
+            <div class="contact-btns">
               <a href="mailto:pryor.to.admit@gmail.com?subject=Free%20Consultation%20Inquiry" class="btn btn-primary">Email Marcy <span class="arrow">→</span></a>
+              <a href="tel:+19142621883" class="btn btn-secondary">Call Marcy</a>
             </div>
             <p class="contact-note">Pryor to Admit keeps a limited caseload each year. Families are encouraged to reach out early to discuss availability and fit.</p>
           </div>
@@ -546,7 +556,7 @@
     <div class="container">
       <span class="brand">Pryor <span>to</span> Admit</span>
       <div class="footer-tag">Turning effort into opportunities, and opportunities into outcomes.</div>
-      <div><a href="mailto:pryor.to.admit@gmail.com">pryor.to.admit@gmail.com</a></div>
+      <div><a href="mailto:pryor.to.admit@gmail.com">pryor.to.admit@gmail.com</a> &nbsp;·&nbsp; <a href="tel:+19142621883">914-262-1883</a></div>
       <div class="footer-fine">© <span id="year"></span> Pryor to Admit · Marcy Pryor, Ed.D.</div>
     </div>
   </footer>
@@ -565,7 +575,7 @@
         const words = node.textContent.trim().split(/\s+/);
         node.innerHTML = words.map(w => '<span class="'+(shine?'word shine':'word')+'" style="transition-delay:'+(idx++*0.055)+'s">'+w+'</span>').join(' ');
       }
-      build(l1, false); build(l2, true);
+      build(l1, true); build(l2, false);
       l1.style.display = 'block'; l2.style.display = 'block'; l2.style.marginTop = '.08em';
       const words = el.querySelectorAll('.word');
       if (reduceMotion) { words.forEach(w => { w.style.opacity = 1; w.style.transform = 'none'; }); return; }
@@ -670,7 +680,7 @@
 
     /* school marquee */
     (function(){
-      const schools = ['University of Pennsylvania (Wharton)','Cornell University','William & Mary','Lehigh University','University of Richmond','Bucknell University','Case Western Reserve','Northeastern Honors','Indiana University (Kelley)','George Washington University','Ohio State University','University of Florida','Rutgers University','Michigan State University','University of Connecticut','University of Delaware','Miami University (Ohio)','Union College','RIT (Accelerated)','Quinnipiac University','College of Charleston','CU Boulder'];
+      const schools = ['University of Pennsylvania (Wharton)','Cornell University','Georgetown University','Tufts University','Wesleyan University','London School of Economics','William & Mary','Lehigh University','University of Richmond','Northeastern Honors','Bucknell University','Case Western Reserve','Indiana University (Kelley)','George Washington University','Ohio State University','University of Florida','Rutgers University','Michigan State University','University of Connecticut','University of Delaware','Miami University (Ohio)','Union College','RIT (Accelerated)','Quinnipiac University','College of Charleston','CU Boulder'];
       function fill(id, list){ const el=document.getElementById(id); el.innerHTML = list.concat(list).map(s => '<span>'+s+'</span>').join(''); }
       const half = Math.ceil(schools.length/2);
       fill('mq1', schools.slice(0, half)); fill('mq2', schools.slice(half));
