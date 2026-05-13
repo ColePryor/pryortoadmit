@@ -252,7 +252,7 @@
     .result-col li { padding: 9px 0; font-size: 14.5px; color: var(--ink); border-bottom: 1px dashed var(--line); opacity: 0; transform: translateX(-8px); transition: opacity .5s ease, transform .5s ease; }
     .result-col li:last-child { border-bottom: 0; }
     .result-col.in li { opacity: 1; transform: translateX(0); }
-    .result-col.in li:nth-child(1){transition-delay:.05s}.result-col.in li:nth-child(2){transition-delay:.10s}.result-col.in li:nth-child(3){transition-delay:.15s}.result-col.in li:nth-child(4){transition-delay:.20s}.result-col.in li:nth-child(5){transition-delay:.25s}.result-col.in li:nth-child(6){transition-delay:.30s}.result-col.in li:nth-child(7){transition-delay:.35s}.result-col.in li:nth-child(8){transition-delay:.40s}.result-col.in li:nth-child(9){transition-delay:.45s}.result-col.in li:nth-child(10){transition-delay:.50s}.result-col.in li:nth-child(11){transition-delay:.55s}
+    .result-col.in li:nth-child(1){transition-delay:.04s}.result-col.in li:nth-child(2){transition-delay:.08s}.result-col.in li:nth-child(3){transition-delay:.12s}.result-col.in li:nth-child(4){transition-delay:.16s}.result-col.in li:nth-child(5){transition-delay:.20s}.result-col.in li:nth-child(6){transition-delay:.24s}.result-col.in li:nth-child(7){transition-delay:.28s}.result-col.in li:nth-child(8){transition-delay:.32s}.result-col.in li:nth-child(9){transition-delay:.36s}.result-col.in li:nth-child(10){transition-delay:.40s}.result-col.in li:nth-child(11){transition-delay:.44s}.result-col.in li:nth-child(12){transition-delay:.48s}.result-col.in li:nth-child(13){transition-delay:.52s}.result-col.in li:nth-child(14){transition-delay:.56s}.result-col.in li:nth-child(15){transition-delay:.60s}.result-col.in li:nth-child(16){transition-delay:.64s}.result-col.in li:nth-child(17){transition-delay:.68s}
     .results-note { margin-top: 52px; padding: 44px; border-radius: var(--radius); text-align: center; font-size: 17px; color: rgba(244,247,247,.94); background: radial-gradient(ellipse at top left, rgba(174,190,194,.3), transparent 55%), radial-gradient(ellipse at bottom right, var(--navy-soft), transparent 60%), var(--navy); box-shadow: 0 22px 56px rgba(24,41,63,.2); }
     .results-note strong { color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 24px; }
     @media (max-width: 880px) { .results-grid { grid-template-columns: 1fr; } }
@@ -451,18 +451,10 @@
       <span class="results-merit reveal">Merit scholarships earned: <span class="count count-up" data-target="44" data-prefix="$18,000 to $" data-suffix=",000+ per year">$18,000 to $0,000+ per year</span></span>
       <div class="results-grid">
         <div class="result-col">
-          <h3>Ivy &amp; Most Selective</h3>
+          <h3>Ivy League</h3>
           <ul>
             <li>University of Pennsylvania, Wharton</li>
             <li>Cornell University</li>
-            <li>Georgetown University</li>
-            <li>Tufts University</li>
-            <li>Wesleyan University</li>
-            <li>London School of Economics</li>
-            <li>William &amp; Mary</li>
-            <li>Lehigh University</li>
-            <li>University of Richmond</li>
-            <li>Northeastern University, Honors</li>
           </ul>
         </div>
         <div class="result-col">
@@ -470,10 +462,14 @@
           <ul>
             <li>Bucknell University</li>
             <li>Case Western Reserve University</li>
+            <li>UT Austin</li>
+            <li>Purdue University</li>
+            <li>University of Illinois Urbana-Champaign</li>
             <li>Indiana University, Kelley School of Business</li>
             <li>George Washington University</li>
             <li>The Ohio State University</li>
             <li>University of Florida</li>
+            <li>University of South Carolina</li>
             <li>Rutgers University</li>
             <li>Michigan State University</li>
             <li>University of Connecticut</li>
@@ -482,13 +478,23 @@
         <div class="result-col">
           <h3>Standout Programs &amp; Honors Colleges</h3>
           <ul>
+            <li>Georgetown University</li>
+            <li>Tufts University</li>
+            <li>Wesleyan University</li>
+            <li>Colgate University</li>
+            <li>London School of Economics</li>
+            <li>William &amp; Mary</li>
+            <li>Lehigh University</li>
+            <li>University of Richmond</li>
+            <li>Northeastern University, Honors</li>
+            <li>Binghamton University</li>
             <li>University of Delaware</li>
+            <li>CU Boulder</li>
             <li>Miami University, Ohio</li>
+            <li>College of Charleston</li>
             <li>Union College</li>
             <li>RIT, Accelerated Program</li>
             <li>Quinnipiac University</li>
-            <li>College of Charleston</li>
-            <li>CU Boulder</li>
           </ul>
         </div>
       </div>
@@ -680,7 +686,7 @@
 
     /* school marquee */
     (function(){
-      const schools = ['University of Pennsylvania (Wharton)','Cornell University','Georgetown University','Tufts University','Wesleyan University','London School of Economics','William & Mary','Lehigh University','University of Richmond','Northeastern Honors','Bucknell University','Case Western Reserve','Indiana University (Kelley)','George Washington University','Ohio State University','University of Florida','Rutgers University','Michigan State University','University of Connecticut','University of Delaware','Miami University (Ohio)','Union College','RIT (Accelerated)','Quinnipiac University','College of Charleston','CU Boulder'];
+      const schools = ['University of Pennsylvania (Wharton)','Cornell University','Georgetown University','Tufts University','Wesleyan University','Colgate University','London School of Economics','William & Mary','Lehigh University','University of Richmond','Northeastern Honors','Binghamton University','Bucknell University','Case Western Reserve','UT Austin','Purdue University','UIUC','Indiana University (Kelley)','George Washington University','Ohio State University','University of Florida','University of South Carolina','Rutgers University','Michigan State University','University of Connecticut','University of Delaware','Miami University (Ohio)','Union College','RIT (Accelerated)','Quinnipiac University','College of Charleston','CU Boulder'];
       function fill(id, list){ const el=document.getElementById(id); el.innerHTML = list.concat(list).map(s => '<span>'+s+'</span>').join(''); }
       const half = Math.ceil(schools.length/2);
       fill('mq1', schools.slice(0, half)); fill('mq2', schools.slice(half));
