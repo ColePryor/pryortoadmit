@@ -692,7 +692,7 @@
 
     /* school marquee */
     (function(){
-      const schools = ['University of Pennsylvania (Wharton)','University of Pennsylvania (Arts & Sciences)','Cornell University','Georgetown University','Tufts University','University of Richmond','Wesleyan University','Colgate University','London School of Economics','William & Mary','Bucknell University','UT Austin','Indiana University (Kelley)','Purdue University','Rutgers University','Penn State University','Ohio State University','UIUC','CU Boulder','Miami University (Ohio)','University of Delaware','UMass Amherst','College of Charleston','University of Florida','University of South Florida','Northeastern Honors','Binghamton University','Case Western Reserve','Union College','RIT (Accelerated)','Tulane University','Lehigh University','Michigan State University','University of Scranton','Franklin & Marshall','George Washington University','American University','Gettysburg College'];
+      const schools = ['University of Pennsylvania (Wharton)','University of Pennsylvania (Arts & Sciences)','Cornell University','Georgetown University','Tufts University','University of Richmond','Wesleyan University','Colgate University','London School of Economics','William & Mary','Bucknell University'];
       function fill(id, list){ const el=document.getElementById(id); el.innerHTML = list.concat(list).map(s => '<span>'+s+'</span>').join(''); }
       const half = Math.ceil(schools.length/2);
       fill('mq1', schools.slice(0, half)); fill('mq2', schools.slice(half));
