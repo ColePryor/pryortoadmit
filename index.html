@@ -451,50 +451,56 @@
       <span class="results-merit reveal">Merit scholarships earned: <span class="count count-up" data-target="44" data-prefix="$18,000 to $" data-suffix=",000+ per year">$18,000 to $0,000+ per year</span></span>
       <div class="results-grid">
         <div class="result-col">
-          <h3>Ivy League</h3>
-          <ul>
-            <li>University of Pennsylvania, Wharton</li>
-            <li>Cornell University</li>
-          </ul>
-        </div>
-        <div class="result-col">
           <h3>Top National Universities</h3>
           <ul>
-            <li>Bucknell University</li>
-            <li>Case Western Reserve University</li>
-            <li>UT Austin</li>
-            <li>Purdue University</li>
-            <li>University of Illinois Urbana-Champaign</li>
-            <li>Indiana University, Kelley School of Business</li>
-            <li>George Washington University</li>
-            <li>The Ohio State University</li>
-            <li>University of Florida</li>
-            <li>University of South Carolina</li>
-            <li>Rutgers University</li>
-            <li>Michigan State University</li>
-            <li>University of Connecticut</li>
-          </ul>
-        </div>
-        <div class="result-col">
-          <h3>Standout Programs &amp; Honors Colleges</h3>
-          <ul>
+            <li>University of Pennsylvania, Wharton</li>
+            <li>University of Pennsylvania, College of Arts and Sciences</li>
+            <li>Cornell University</li>
             <li>Georgetown University</li>
             <li>Tufts University</li>
+            <li>University of Richmond</li>
             <li>Wesleyan University</li>
             <li>Colgate University</li>
             <li>London School of Economics</li>
             <li>William &amp; Mary</li>
-            <li>Lehigh University</li>
-            <li>University of Richmond</li>
-            <li>Northeastern University, Honors</li>
-            <li>Binghamton University</li>
-            <li>University of Delaware</li>
+            <li>Bucknell University</li>
+          </ul>
+        </div>
+        <div class="result-col">
+          <h3>Public</h3>
+          <ul>
+            <li>UT Austin</li>
+            <li>Indiana University, Kelley School of Business</li>
+            <li>Purdue University</li>
+            <li>Rutgers University</li>
+            <li>Penn State University</li>
+            <li>The Ohio State University</li>
+            <li>University of Illinois Urbana-Champaign</li>
             <li>CU Boulder</li>
             <li>Miami University, Ohio</li>
+            <li>University of Delaware</li>
+            <li>UMass Amherst</li>
             <li>College of Charleston</li>
+            <li>University of Florida</li>
+            <li>University of South Florida</li>
+          </ul>
+        </div>
+        <div class="result-col">
+          <h3>Honors Colleges &amp; Scholarships</h3>
+          <ul>
+            <li>Northeastern University, Honors</li>
+            <li>Binghamton University</li>
+            <li>Case Western Reserve University</li>
             <li>Union College</li>
             <li>RIT, Accelerated Program</li>
-            <li>Quinnipiac University</li>
+            <li>Tulane University</li>
+            <li>Lehigh University</li>
+            <li>Michigan State University</li>
+            <li>University of Scranton</li>
+            <li>Franklin &amp; Marshall College</li>
+            <li>George Washington University</li>
+            <li>American University</li>
+            <li>Gettysburg College</li>
           </ul>
         </div>
       </div>
@@ -686,7 +692,7 @@
 
     /* school marquee */
     (function(){
-      const schools = ['University of Pennsylvania (Wharton)','Cornell University','Georgetown University','Tufts University','Wesleyan University','Colgate University','London School of Economics','William & Mary','Lehigh University','University of Richmond','Northeastern Honors','Binghamton University','Bucknell University','Case Western Reserve','UT Austin','Purdue University','UIUC','Indiana University (Kelley)','George Washington University','Ohio State University','University of Florida','University of South Carolina','Rutgers University','Michigan State University','University of Connecticut','University of Delaware','Miami University (Ohio)','Union College','RIT (Accelerated)','Quinnipiac University','College of Charleston','CU Boulder'];
+      const schools = ['University of Pennsylvania (Wharton)','University of Pennsylvania (Arts & Sciences)','Cornell University','Georgetown University','Tufts University','University of Richmond','Wesleyan University','Colgate University','London School of Economics','William & Mary','Bucknell University','UT Austin','Indiana University (Kelley)','Purdue University','Rutgers University','Penn State University','Ohio State University','UIUC','CU Boulder','Miami University (Ohio)','University of Delaware','UMass Amherst','College of Charleston','University of Florida','University of South Florida','Northeastern Honors','Binghamton University','Case Western Reserve','Union College','RIT (Accelerated)','Tulane University','Lehigh University','Michigan State University','University of Scranton','Franklin & Marshall','George Washington University','American University','Gettysburg College'];
       function fill(id, list){ const el=document.getElementById(id); el.innerHTML = list.concat(list).map(s => '<span>'+s+'</span>').join(''); }
       const half = Math.ceil(schools.length/2);
       fill('mq1', schools.slice(0, half)); fill('mq2', schools.slice(half));
